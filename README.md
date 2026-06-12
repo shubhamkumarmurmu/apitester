@@ -1,73 +1,265 @@
 # apitester
 
-> A lightweight command-line tool for testing HTTP APIs.
+> A lightweight, terminal-first CLI for testing and validating HTTP APIs without leaving your shell.
 
-![GitHub stars](https://img.shields.io/github/stars/shubhamkumarmurmu/apitester?style=for-the-badge&logo=github) ![GitHub forks](https://img.shields.io/github/forks/shubhamkumarmurmu/apitester?style=for-the-badge&logo=github) ![GitHub issues](https://img.shields.io/github/issues/shubhamkumarmurmu/apitester?style=for-the-badge&logo=github) ![Last commit](https://img.shields.io/github/last-commit/shubhamkumarmurmu/apitester?style=for-the-badge&logo=github) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![License](https://img.shields.io/badge/license-ISC-green?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/shubhamkumarmurmu/apitester?style=for-the-badge\&logo=github)
+![GitHub forks](https://img.shields.io/github/forks/shubhamkumarmurmu/apitester?style=for-the-badge\&logo=github)
+![GitHub issues](https://img.shields.io/github/issues/shubhamkumarmurmu/apitester?style=for-the-badge\&logo=github)
+![Last commit](https://img.shields.io/github/last-commit/shubhamkumarmurmu/apitester?style=for-the-badge\&logo=github)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white)
+![License](https://img.shields.io/badge/license-ISC-green?style=for-the-badge)
 
-##  Table of Contents
+---
 
-- [Description](#description)
-- [Key Features](#key-features)
-- [Use Cases](#use-cases)
-- [Tech Stack](#tech-stack)
-- [Quick Start](#quick-start)
-- [Key Dependencies](#key-dependencies)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Development Setup](#development-setup)
-- [Contributing](#contributing)
-- [License](#license)
+## Table of Contents
 
-##  Description
+* [Overview](#overview)
+* [Why apitester](#why-apitester)
+* [Features](#features)
+* [Installation](#installation)
+* [Quick Start](#quick-start)
+* [CLI Commands](#cli-commands)
+* [Collection Support](#collection-support)
+* [Examples](#examples)
+* [Tech Stack](#tech-stack)
+* [Project Structure](#project-structure)
+* [Development Setup](#development-setup)
+* [Available Scripts](#available-scripts)
+* [Future Roadmap](#future-roadmap)
+* [Contributing](#contributing)
+* [License](#license)
 
-apitester is a lightweight, terminal-based command-line interface (CLI) designed for executing and validating HTTP API requests. It addresses the need for a fast, minimal alternative to resource-heavy desktop application clients, enabling developers to run API tests directly from their local terminal environments.
+---
 
-##  Key Features
+## Overview
 
-- ** Command-Line Execution** — Run and manage HTTP API test suites directly from your local terminal environment.
-- ** Structured Test Collections** — Organize related HTTP request configurations and assertions inside dedicated collections directories.
-- ** Node.js Powered** — Leverages the lightweight Node.js runtime for fast execution and easy integration into JS workflows.
+**apitester** is a lightweight command-line tool built with Node.js that enables developers to send HTTP requests, validate responses, and organize API tests directly from the terminal.
 
-##  Use Cases
+Instead of relying on large desktop API clients, apitester provides a fast and scriptable workflow that integrates naturally with local development environments and automation pipelines.
 
-- Verifying API responses and status codes locally during backend development.
-- Grouping complex HTTP request sequences into logical collections for organized testing.
-- Executing fast, automated API checks via local shell commands.
+---
 
-##  Tech Stack
+## Why apitester
 
--  **JavaScript**
--  **Node.js**
+Many API testing tools are powerful but often require a graphical interface and significant system resources.
 
-##  Quick Start
+apitester focuses on:
+
+* Fast startup and execution
+* Terminal-native workflows
+* Lightweight dependency footprint
+* Simple collection-based organization
+* Easy integration with automation scripts
+
+---
+
+## Features
+
+### HTTP Request Execution
+
+Execute API requests directly from your terminal.
+
+Supported methods:
+
+* GET
+* POST
+* PUT
+* DELETE
+
+### Collection Management
+
+Save and organize requests into reusable collections.
+
+### Lightweight Architecture
+
+Built using Node.js with minimal dependencies.
+
+### Developer Friendly
+
+* Human-readable output
+* Colored terminal responses
+* Easy command structure
+* Extensible architecture
+
+### Automation Ready
+
+Can be integrated into:
+
+* Local development workflows
+* Shell scripts
+* CI/CD pipelines
+* Automated testing setups
+
+---
+
+## Installation
+
+### Using NPX (Recommended)
 
 ```bash
+npx github:shubhamkumarmurmu/apitester
+```
 
-# 1. Clone the repository
+Verify installation:
+
+```bash
+apitester --version
+```
+
+Display help:
+
+```bash
+apitester --help
+```
+
+---
+
+### Clone and Run Locally
+
+```bash
 git clone https://github.com/shubhamkumarmurmu/apitester.git
 
-# 2. Install dependencies
+cd apitester
+
 npm install
-
-# 3. Start the dev server
-npm run dev
 ```
 
-##  Key Dependencies
+---
 
+## Quick Start
+
+### GET Request
+
+```bash
+apitester get https://jsonplaceholder.typicode.com/posts/1
 ```
-arg: ^5.0.2
-axios: ^1.17.0
-chalk: ^5.6.2
+
+### POST Request
+
+```bash
+apitester post https://jsonplaceholder.typicode.com/posts \
+--data '{"title":"Hello","body":"Testing"}'
 ```
 
-##  Available Scripts
+### PUT Request
 
-- **test** — `npm run test`
-
-##  Project Structure
-
+```bash
+apitester put https://jsonplaceholder.typicode.com/posts/1 \
+--data '{"title":"Updated"}'
 ```
+
+### DELETE Request
+
+```bash
+apitester delete https://jsonplaceholder.typicode.com/posts/1
+```
+
+---
+
+## CLI Commands
+
+| Command      | Description                |
+| ------------ | -------------------------- |
+| `get`        | Send GET request           |
+| `post`       | Send POST request          |
+| `put`        | Send PUT request           |
+| `delete`     | Send DELETE request        |
+| `save`       | Save request to collection |
+| `run`        | Execute collection         |
+| `collection` | Manage collections         |
+| `help`       | Display CLI help           |
+
+Get command-specific help:
+
+```bash
+apitester get --help
+apitester post --help
+apitester run --help
+```
+
+---
+
+## Collection Support
+
+Collections allow grouping related requests together.
+
+Example:
+
+```json
+{
+  "name": "User API Tests",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://api.example.com/users"
+    },
+    {
+      "method": "POST",
+      "url": "https://api.example.com/users"
+    }
+  ]
+}
+```
+
+Run a collection:
+
+```bash
+apitester run collections/users.json
+```
+
+---
+
+## Examples
+
+### Fetch User Details
+
+```bash
+apitester get https://api.example.com/users/1
+```
+
+### Create User
+
+```bash
+apitester post https://api.example.com/users \
+--data '{"name":"John"}'
+```
+
+### Update User
+
+```bash
+apitester put https://api.example.com/users/1 \
+--data '{"name":"Updated User"}'
+```
+
+### Delete User
+
+```bash
+apitester delete https://api.example.com/users/1
+```
+
+---
+
+## Tech Stack
+
+### Core Technologies
+
+* JavaScript (ES Modules)
+* Node.js
+
+### Key Dependencies
+
+| Package | Purpose                       |
+| ------- | ----------------------------- |
+| axios   | HTTP client                   |
+| arg     | Command-line argument parsing |
+| chalk   | Colored terminal output       |
+
+---
+
+## Project Structure
+
+```text
 .
 ├── LICENSE
 ├── collections
@@ -92,27 +284,105 @@ chalk: ^5.6.2
         └── request-runner.js
 ```
 
-##  Development Setup
+---
 
-### Node.js / JavaScript
-1. Install Node.js (v18+ recommended)
-2. Install dependencies: `npm install` (or `yarn` / `pnpm install` / `bun install`)
-3. Start the dev server: see the **Quick Start** above
+## Development Setup
 
-##  Contributing
+### Prerequisites
 
-Contributions are welcome! Here's the standard flow:
+* Node.js v18+
+* npm v9+
 
-1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/shubhamkumarmurmu/apitester.git`
-3. **Branch**: `git checkout -b feature/your-feature`
-4. **Commit**: `git commit -m 'feat: add some feature'`
-5. **Push**: `git push origin feature/your-feature`
-6. **Open** a pull request
+### Install Dependencies
 
-Please follow the existing code style and include tests for new behavior where applicable.
+```bash
+npm install
+```
 
-##  License
+### Start Development
 
-This project is licensed under the **ISC** License.
+```bash
+npm run dev
+```
 
+### Run Tests
+
+```bash
+npm run test
+```
+
+---
+
+## Available Scripts
+
+| Script         | Description      |
+| -------------- | ---------------- |
+| `npm run dev`  | Development mode |
+| `npm run test` | Run test suite   |
+
+---
+
+## Future Roadmap
+
+Planned improvements:
+
+* Request headers support
+* Environment variables
+* Authentication helpers
+* Response assertions
+* JSON schema validation
+* Collection folders
+* Export/import collections
+* CI integration support
+* Interactive mode
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+### Workflow
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/my-feature
+```
+
+3. Commit changes
+
+```bash
+git commit -m "feat: add new feature"
+```
+
+4. Push branch
+
+```bash
+git push origin feature/my-feature
+```
+
+5. Open a Pull Request
+
+Please ensure:
+
+* Code follows existing conventions
+* New functionality includes tests
+* Documentation is updated when required
+
+---
+
+## License
+
+Licensed under the ISC License.
+
+See the `LICENSE` file for complete details.
+
+---
+
+### Author
+
+**Shubham Kumar Murmu**
+
+If you find this project useful, consider starring the repository to support development.
