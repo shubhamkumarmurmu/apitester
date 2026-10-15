@@ -98,7 +98,7 @@ Can be integrated into:
 ### Using NPX (Recommended)
 
 ```bash
-npx github:shubhamkumarmurmu/apitester
+npm install -g github:shubhamkumarmurmu/apitester
 ```
 
 Verify installation:
