@@ -16,14 +16,12 @@ ${chalk.bold('DESCRIPTION')}
   Runs a saved request collection. CLI options override the saved values.
 
 ${chalk.bold('OPTIONS')}
-  --env,     -e  <env>      Environment override
   --timeout, -t  <ms>       Timeout override
   --verbose, -v             Show request/response headers
   --output,  -o  <file>     Save response body to file
 
 ${chalk.bold('EXAMPLES')}
   apitester run get-user
-  apitester run get-user --env prod
   apitester run get-user --verbose
 `;
 
@@ -64,7 +62,6 @@ module.exports = async function run(argv) {
     url:     overrides.url      || collection.url,
     data:    overrides.data     || collection.data,
     headers: Object.assign({}, collection.headers || {}, overrides.headers || {}),
-    env:     overrides.env      || collection.env,
     timeout: overrides.timeout  || collection.timeout,
     verbose: overrides.verbose  || false,
     output:  overrides.output,

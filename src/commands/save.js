@@ -16,7 +16,6 @@ ${chalk.bold("OPTIONS")}
   --url      <url>         Request URL
   --data,    -d  <json>    Request body
   --header,  -H  <header>  Headers to include
-  --env,     -e  <env>     Environment override
 
 ${chalk.bold("EXAMPLES")}
   apitester save get-user    --method GET    --url /users/1
@@ -33,12 +32,10 @@ module.exports = async function save(argv) {
       "--help": Boolean,
       "--data": String,
       "--header": [String],
-      "--env": String,
       "--timeout": Number,
       "--verbose": Boolean,
       "-d": "--data",
       "-H": "--header",
-      "-e": "--env",
       "-t": "--timeout",
       "-v": "--verbose",
       "-h": "--help",
@@ -63,7 +60,6 @@ module.exports = async function save(argv) {
   const commonOpts = {
     data: topArgs["--data"],
     headers: parseHeaders(topArgs["--header"] || []),
-    env: topArgs["--env"],
     timeout: topArgs["--timeout"],
   };
 
@@ -83,7 +79,6 @@ module.exports = async function save(argv) {
     ...(Object.keys(commonOpts.headers || {}).length && {
       headers: commonOpts.headers,
     }),
-    ...(commonOpts.env && { env: commonOpts.env }),
     ...(commonOpts.timeout && { timeout: commonOpts.timeout }),
     savedAt: new Date().toISOString(),
   };

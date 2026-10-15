@@ -6,6 +6,7 @@ const { version } = require("../package.json");
 const getCmd=require('../src/commands/get');
 const postCmd=require('../src/commands/post');
 const putCmd=require('../src/commands/put');
+const patchCmd=require('../src/commands/patch');
 const deleteCmd=require('../src/commands/delete');
 const saveCmd=require('../src/commands/save');
 const runCmd=require('../src/commands/run');
@@ -31,6 +32,7 @@ const commands={
     post:postCmd,
     delete:deleteCmd,
     put:putCmd,
+    patch:patchCmd,
     run:runCmd,
     save:saveCmd,
     collection:collectionCmd

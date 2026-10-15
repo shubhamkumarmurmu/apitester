@@ -4,7 +4,6 @@ const { parseHeaders } = require("./formatter");
 const COMMON_SPEC = {
   "--data": String,
   "--header": [String],
-  "--env": String,
   "--timeout": Number,
   "--verbose": Boolean,
   "--output": String,
@@ -12,7 +11,6 @@ const COMMON_SPEC = {
 
   "-d": String,
   "-H": [String],
-  "-e": String,
   "-t": Number,
   "-v": Boolean,
   "-o": String,
@@ -29,7 +27,6 @@ function parseCommonArgs(argv) {
     url,
     data: args["--data"],
     headers,
-    env: args["--env"],
     timeout: args["--timeout"],
     verbose: args["--verbose"] || false,
     output: args["--output"],

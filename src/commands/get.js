@@ -8,14 +8,13 @@ ${chalk.bold('USAGE')}
 
 ${chalk.bold('OPTIONS')}
   --header,  -H  <header>   Add a request header (repeatable)
-  --env,     -e  <env>      Environment to use from config
   --timeout, -t  <ms>       Timeout in milliseconds
   --verbose, -v             Show request/response headers
   --output,  -o  <file>     Save response body to file
 
 ${chalk.bold('EXAMPLES')}
   apitester get https://jsonplaceholder.typicode.com/posts/1
-  apitester get /users --env prod --verbose
+  apitester get /users --verbose
   apitester get /posts --header "Authorization: Bearer token"
 `;
 
